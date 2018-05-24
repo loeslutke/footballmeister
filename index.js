@@ -59,5 +59,5 @@ app.use(function(ctx) {
   ctx.body = requestResponse;
 });
 
-// Set de app op port 3000
+// Set de app op port 8080
 app.listen(8080);
