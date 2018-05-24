@@ -1,0 +1,17 @@
+{
+  "name": "voetbalmaster",
+  "version": "1.0.0",
+  "description": "Assessment applicatie featuring football-api.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Bram Lutke",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^2.5.1",
+    "koa-request": "^1.0.0",
+    "koa-router": "^7.4.0",
+    "request": "^2.87.0"
+  }
+}
