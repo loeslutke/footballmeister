@@ -18,12 +18,13 @@ var toDate = "7-5-2018";
 app.use(function(ctx) {
   // Maak de request url, en maak de request
   var requestUrl = "http://api.football-api.com/2.0/matches?comp_id="+compId+"&from_date="+fromDate+"&to_date="+toDate+"&Authorization="+authorizationKey;
-  var returnValue = Request(requestUrl, { json: true }, (err, res, body) => {
+  var requestResponse = Request(requestUrl, { json: true }, (err, res, body) => {
     // Check of de request een error oplevert; zoja, gebruik een faked response
+    var response = '';
     if(body.hasOwnProperty('error')) {
-      var response = Service.getFakeResponse();
+      response = Service.getFakeResponse();
     } else {
-      var response = body;
+      response = body;
     }
 
     // De array om alle wedstrijden in op te vangen
@@ -52,11 +53,11 @@ app.use(function(ctx) {
     });
 
     // set de gesorteerde allGames array als body voor de request, zodat de request daadwerkelijk gebruikt kan worden
-    return allGames;
+    return JSON.stringify(allGames);
   });
   // Set de returnValue als body zodat deze gebruikt kan worden
-  ctx.body = returnValue;
+  ctx.body = requestResponse;
 });
 
 // Set de app op port 3000
-app.listen(3000);
+app.listen(8080);
